@@ -4,7 +4,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const port = process.env.PORT || 2024;
 const connectDB = require("./DB/connectDB");
-// const bodyParser = require('body-parser')
 
 
 const notFound = require('./middleware/notFound')
@@ -20,8 +19,6 @@ const express = require("express");
 const app = express();
 
 app.use(express.json());
-// app.use(bodyParser.json({limit:"50mb"}));
-// app.use(bodyParser.urlencoded({limit:"50mb", extended: true }))
 app.use(
   cors({
     origin: "http://localhost:5173",
