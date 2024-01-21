@@ -23,6 +23,7 @@ app.use(
   cors({
     origin: "https://social-media-application-lyart.vercel.app/",
     credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
 app.use(cookieParser());
