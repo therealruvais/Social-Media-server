@@ -40,7 +40,8 @@ const loginUser = async (req, res) => {
     path: "/",
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
     httpOnly: true,
-    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production", 
+    sameSite: "None",
   });
   res.json({ msg: "success", userToken });
 };
