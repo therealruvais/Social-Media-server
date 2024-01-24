@@ -18,7 +18,16 @@ const messageRoute = require('./routes/messageRoute')
 const express = require("express");
 const app = express();
 
+app.use(
+  cors({
+    origin: "https://social-media-application-lyart.vercel.app",
+    credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  })
+);
+
 app.use(express.json());
+app.use(cookieParser());
 
 app.use((req, res, next) => {
   res.header(
@@ -28,14 +37,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-    origin: "https://social-media-application-lyart.vercel.app",
-    credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
-app.use(cookieParser());
+
 
 app.use('/api/user',authRoute)
 app.use('/api/post',postRoute)
