@@ -38,10 +38,10 @@ const loginUser = async (req, res) => {
   }
   res.cookie(String(findUser._id), userToken, {
     path: "/",
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", 
-    sameSite: "None",
+    sameSite: "lax",
   });
   res.json({ msg: "success", userToken });
 };
