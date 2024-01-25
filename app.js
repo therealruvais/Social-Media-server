@@ -20,7 +20,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://pichub-client.vercel.app",
+    origin: "https://social-media-application-lyart.vercel.app",
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://pichub-client.vercel.app"
+    "https://social-media-application-lyart.vercel.app"
   );
   next();
 });
