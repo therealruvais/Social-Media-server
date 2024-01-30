@@ -42,6 +42,7 @@ const loginUser = async (req, res) => {
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", 
+    sameSite:'None'
   });
   res.json({ msg: "success", userToken });
 };
@@ -72,13 +73,13 @@ const refreshToken = (req, res, next) => {
     req.cookies[`${user.id}`] = "";
 
     const refreshToken = jwt.sign({ id: user.id }, process.env.USER_KEY, {
-      expiresIn: "2d",
+      expiresIn: "1d",
     });
     res.cookie(String(user.id), refreshToken, {
       path: "/",
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 3),
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "None",
     });
     console.log(user);
   });
